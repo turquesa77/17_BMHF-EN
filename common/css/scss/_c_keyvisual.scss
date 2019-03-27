@@ -1,0 +1,118 @@
+/* Scss Document */
+
+// keyVisual ------------------------------
+.keyVisual {
+	/* for slick slider
+	width: 100%;
+	max-height: 600px;
+	overflow: hidden;
+	position: relative;
+	&__slider {
+		img {
+			max-width: none;
+		}
+	}*/
+	
+	width: 100%;
+	height: 100%;
+	max-height: 600px;
+	overflow: hidden;
+	position: relative;
+	&:before {
+		content: "";
+		display: block;
+		padding-top: 56.25%;
+	}
+	
+	%positionBase {
+		position: absolute;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		width: 100%;
+		max-width: 100%;
+		height: auto;
+		min-height: 100%;
+	}
+	// スマホ画面では動画は非表示
+	&__video {
+		@extend %positionBase;
+		@include media(sp) {
+			display: none;
+		}
+	}
+	// PC画面では静止画非表示
+	&__subImage {
+		@extend %positionBase;
+		@include media(pc) {
+			display: none;
+		}
+	}
+	&__content {
+	}
+	&__pop {
+		@mixin btn {
+			display: block;
+			width: 100%;
+			padding: 15px 30px;
+			border: 2px solid white;
+			color: white;
+			white-space: nowrap;
+			@include font-size(20);
+			@include hoverOpc;
+			@include media(sp) {
+				@include font-size(16);
+				text-align: center;
+				padding: 8px 15px;
+			}
+			&:hover {
+				opacity: 0.7;
+				
+			}
+		}
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+		margin-top: -5px;
+		@include media(sp) {
+			margin-top: 0;
+		}
+		&__01 {
+			max-width: 650px;
+			// 展示会概要の画像を画面幅によってサイズ調整
+			@media screen and (max-width:980px) {
+				width: 500px;
+			}
+			@media screen and (max-width:560px) {
+				width: 400px;
+			}
+			@media screen and (max-width:430px) {
+				width: 300px;
+			}
+
+		}
+		&__btn {
+			display: flex;
+			flex-flow: row;
+			justify-content: space-around;
+			margin-top: 30px;
+			@include media(sp) {
+				display: none;
+			}
+			&__01 {
+				a {
+					@include btn;
+					background-color: $color-type02;
+				}
+			}
+			&__02 {
+				a {
+					@include btn;
+					background-color: $color-main;
+				}
+			}
+		}
+	}
+}
